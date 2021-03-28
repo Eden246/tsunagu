@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    
+    {% if user.is_authenticated %}
+        <h1 class="text-center border-bottom border-success">物品登録</h1>
+        <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <input type="submit" value="変更">
+        </form>    
+        <script>
+        var name = " {{ user.id }}";
+        document.getElementById("author_id").value = name;
+        </script>
+    {% else %}
+        ログインが必要です。
+    {% endif %}
+
+{% endblock content %}
+    

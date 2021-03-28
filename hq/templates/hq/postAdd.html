@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+        <div class="container">
+                <div class="text-center">
+                    <h3 class="my-3" style="color:navy;">３つのメリット</h3>
+                    <ul>
+                    <h6>指定したセンターで物品をもらえますので、配送料がかかりません！</h6>
+                    <h6>センターへのお預け費用以外、追加費用ゼロ！</h6>
+                    <h6>1回でも寄付し取引できたら、地元の特産品を会員価格で！</h6>
+                    </ul>
+                    <br>
+                    <h3 class="my-3" style="color:red;">注意事項</h3>
+                    <h6>取引が成立した場合、通常2～3営業日以内に会員価格でご購入いただけます。</h6>
+                    <h6>登録してから1ヶ月が経った場合には自動で削除されます。</h6>
+                </div>
+        </div>
+        <br>
+        <br>
+<hr data-content="《WELCOME TO 津NAGU》" class="hr-text" style="width:75%; margin: auto;">
+        <br>
+<div class="container" style="width: 50%; min-width: 470px; max-width: 800px;">
+    {% if user.is_authenticated %}
+        <h1 class="text-center border-bottom border-success">物品登録</h1>
+        <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.static }}
+                {{ form | crispy }}
+                <div class="col-6">
+                </div>
+                <br>
+                <button class='bg-primary loading' role="menuitem" tabindex="-1">登録</button>
+        </form>    
+        <script>
+        var name = " {{ user.id }}";
+        document.getElementById("author_id").value = name;
+        </script>
+    {% else %}
+        <h4 class="text-center">ログインが必要です。</h4>
+    {% endif %}
+</div>
+<br><br>
+{% endblock content %}
+    

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<br><br><br>
+<br><br><br>
+{% if user.is_authenticated %}
+<div class="container">
+     <div class="row">
+          <div class="col-md-6">
+          <h1 class="title animated fadeInDown"style="animation-delay: 0.5s;">津駅前センター</h1>
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="View on mountains from mountain top." class="img-fluid animated fadeInLeft">
+          <h2  class="footer animated fadeInDown"style="animation-delay: 0.5s;">営業時間： 09時から19時まで</h2>
+          </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well-block">
+                <div class="well-title">
+                    <h2 class="animated fadeInLeft" style="animation-delay: 0.5s;">ご予約ありがとうございます！</h2>
+                </div>
+                <form class="animated fadeIn" style="animation-delay: 0.5s;" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form | crispy }}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button class='bg-primary loading' role="menuitem" tabindex="-1">予約</button>
+                    </div>
+                </form>
+
+                <script>
+                var name = " {{ user.id }}";
+                document.getElementById("author_id").value = name;
+                var email = " {{ user.email }}";
+                document.getElementById("email_id").value = email;
+                var phone = " {{ user.phone }}";
+                document.getElementById("phone_id").value = phone;
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% else %}
+        ログインが必要です。
+{% endif %}
+<br><br>
+<br><br>
+
+{% endblock content %}
+    

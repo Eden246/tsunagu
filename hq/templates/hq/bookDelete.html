@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    
+    {% if user.is_authenticated %}
+    <br><br>
+    <div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5 col-sm-6">
+            <a href="{% url 'bookDetail' object.pk %}" class="btn btn-light">戻り</a>
+        </div>
+    </div>
+<br><br><br><br>
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12">
+            <form method="POST">
+                {% csrf_token %}
+                <h4>本当に予約を取り消しますか?</h4>
+                <br>
+                <div class="d-grid gap-2">
+                    <div class="row mb-3 px-3"> <button type="submit" class="btn btn-red text-center">取消し</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    {% else %}
+        ログインが必要です。
+    {% endif %}
+<br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}
+    

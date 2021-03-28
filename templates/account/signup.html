@@ -1,0 +1,41 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "会員登録" %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<br><br><br>
+  <div class="row justify-content-center">
+    <div class="card">
+    <header class="card-header">
+      <h4 class="card-header">{% trans "会員登録" %}</h4>
+    </header>
+    <br>
+    
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="input-group form-group justify-content-center">
+          <div class="input-group-prepend">
+          </div>
+          {{ field }}
+        </div>
+    {% endfor %}
+      {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div class="row mb-3 px-3 justify-content-center"> <button type="submit" class="btn btn-blue text-center">登録</button> </div>
+    </form>
+
+    <p>{% blocktrans %}登録済みの方は、<a href="{{ login_url }}">こちらでログイン</a>お願い申し上げます。{% endblocktrans %}</p>
+    <br>
+    </div>
+  </div>
+  <br><br><br>
+</div>
+
+{% endblock %}

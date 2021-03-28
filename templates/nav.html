@@ -1,0 +1,255 @@
+{% load static %}
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+html, body{
+    font-family: 'Kosugi Maru', sans-serif;
+}
+hr {background-color:black; border:none; height:1px; margin:0px;}
+
+
+.navbar {
+    transition: all 0.4s;
+}
+
+.navbar .nav-link {
+    color: #1A237E;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: orange;
+    text-decoration: none;
+}
+
+.navbar .navbar-brand {
+    color: #fff;
+}
+
+
+/* Change navbar styling on scroll */
+.navbar.active {
+    background: navy;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.active .nav-link {
+    color: #555;
+}
+
+.navbar.active .nav-link:hover,
+.navbar.active .nav-link:focus {
+    color: #555;
+    text-decoration: none;
+}
+
+.navbar.active .navbar-brand {
+    color: #555;
+}
+
+
+/* Change navbar styling on small viewports */
+@media (max-width: 900px) {
+    .navbar {
+        transition: all 0.4s;
+        background: white;
+    }
+
+    .navbar .navbar-brand, .navbar .nav-link {
+        color: #1A237E;
+    }
+}
+a{
+	display: inline-block;
+}
+
+.pinkBg {
+    background-color: #1A237E!important;
+    background-image: linear-gradient(90deg, #1A237E, #1A237E);
+}
+.intro-banner-vdo-play-btn{
+    height:20px;
+    width:0px;
+    position: relative;
+    text-align:center;
+    margin:-50px 0 0 -50px;
+    border-radius:80px;
+    justify-content:center;
+    z-index:1
+}
+.intro-banner-vdo-play-btn i{
+    line-height:112px;
+    font-size:200px
+}
+.intro-banner-vdo-play-btn .ripple{
+    position:absolute;
+    width:140px;
+    height:140px;
+    left: px;
+    z-index:-1;
+    opacity:0;
+    margin:-80px 0 0 -80px;
+    border-radius:100px;
+    -webkit-animation:ripple 5s infinite;
+    animation:ripple 5s infinite
+}
+
+@-webkit-keyframes ripple{
+    0%{
+        opacity:1;
+        -webkit-transform:scale(0);
+        transform:scale(0)
+    }
+    100%{
+        opacity:0;
+        -webkit-transform:scale(1);
+        transform:scale(1)
+    }
+}
+@keyframes ripple{
+    0%{
+        opacity:1;
+        -webkit-transform:scale(0);
+        transform:scale(0)
+    }
+    100%{
+        opacity:0.8;
+        -webkit-transform:scale(1);
+        transform:scale(1)
+    }
+}
+.intro-banner-vdo-play-btn .ripple:nth-child(2){
+    animation-delay:.9s;
+    -webkit-animation-delay:.9s
+}
+.intro-banner-vdo-play-btn .ripple:nth-child(3){
+    animation-delay:6s;
+    -webkit-animation-delay:6s
+}
+
+.nav-item::after{content:'';display:block;width:0px;height:2px;background:#fec400;transition: 0.2s;}
+.nav-item:hover::after{width:100%;}
+
+.loading,.loading>td,.loading>th,.nav li.loading.active>a,.pagination li.loading,.pagination>li.active.loading>a,.pager>li.loading>a{
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
+    background-size: 20px 20px;
+animation: 1s linear 0s normal none infinite progress-bar-stripes;
+-webkit-animation: progress-bar-stripes 1s linear infinite;
+}
+
+.container__c1 {
+    width: 200px;
+    height: 220px;
+    border-radius: 10px;
+    background: #FFCA1B;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: showDisc 1s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+  }
+  .container__c1 .product__disc--content {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    animation: fadeContent 1s ease-in-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+  }
+  /*
+    keyframes
+   */
+  @keyframes openBox {
+    0% {
+      width: 0px;
+      left: 0%;
+    }
+    100% {
+      width: 900px;
+      left: 0%;
+    }
+  }
+  @keyframes fadeImg {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes upVideo {
+    0% {
+      opacity: 0;
+      bottom: -20px;
+    }
+    100% {
+      opacity: 1;
+      bottom: 0px;
+    }
+  }
+  @keyframes showDisc {
+    0% {
+      width: 0px;
+      left: 0;
+    }
+    100% {
+      width: 500px;
+      left: 0;
+    }
+  }
+  @keyframes fadeContent {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeWish {
+    0% {
+      opacity: 0;
+      bottom: -25px;
+    }
+    100% {
+      opacity: 1;
+      bottom: 0;
+    }
+  }
+  @keyframes fadeBuy {
+    0% {
+      opacity: 0;
+      bottom: -25px;
+    }
+    100% {
+      opacity: 1;
+      bottom: 0;
+    }
+  }
+</style>
+     <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container">
+    <a class="navbar-brand" href="{% url 'post'%}"><img src="{%static 'image/logo.png'%}"></a>
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+            
+            <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="{% url 'postAdd'%}" class="nav-link text-uppercase font-weight-bold"><i class="fas fa-clipboard"></i>&nbsp;投稿</a></li>
+                    <li class="nav-item"><a href="{% url 'map'%}" class="nav-link text-uppercase font-weight-bold"><i class="fas fa-door-open"></i>&nbsp;お受け取りセンター</a></li>
+                    <li class="nav-item"><a href="{% url 'book'%}" class="nav-link text-uppercase font-weight-bold"><i class="fas fa-calendar-check"></i>&nbsp;センター予約</a></li>
+                    <li class="nav-item"><a href="{% url 'menu'%}" class="nav-link text-uppercase font-weight-bold"><i class="fas fa-calendar-check"></i>&nbsp;三重名産購入！</a></li>
+                    <a class="nav-link text-uppercase font-weight-bold" href="{% url 'order-summary'%}"><i class="fas fa-shopping-cart"></i>カート</a>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'profile' user.pk %}" class="nav-link text-uppercase font-weight-bold"><i class="far fa-id-card"></i>プロフィール</a></li>
+                    <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link text-uppercase font-weight-bold">ログアウト</a></li>
+                    {% else %}
+                    <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link text-uppercase font-weight-bold">会員登録</a></li>
+                    <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link text-uppercase font-weight-bold">ログイン</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+

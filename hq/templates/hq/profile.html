@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br><br><br>
+<div class="box">
+    <div id="overlay">
+        <ul class="text-center"><h2 style="color: navy;">{{ user.username }}様、ようこそ！&emsp;&emsp;</h2>
+            <br>
+            <a href="{% url 'profileEdit' user.pk %}" style="font-size: 1rem; width:12%;" class="align-items-center btn btn-outline-warning"><i class="far fa-edit"></i>編集</a>&emsp;&emsp;&emsp;
+        </ul>
+        <br>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading " role="tab" id="headingOne">
+                    <h4 class="panel-title text-center">
+                    {% if user.is_authenticated %}
+
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="" aria-controls="collapseOne">
+                            <div class="title  btn btn-danger btn-outline btn-lg p-3">連絡先</div>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="d-flex justify-content-center h-100">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <div clas="input-group form-group">
+                                    メールアドレス
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <div clas="input-group form-group">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <div clas="input-group form-group">
+                                        電話番号
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+                                    <div clas="input-group form-group">
+                                        {{ user.phone }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="text-center">
+<a data-placement="top" class="btn btn-success" href="{% url 'bookDetail' user.pk %}" title="View">《予約履歴》</a>
+</div>
+<br><br><br>
+
+<hr data-content="《登録物件リスト》" class="hr-text" style="width:75%; margin: auto;">
+<br>
+<div class="container" style="width:50%">
+   {% for post in posts %}
+   <div class="card shadow">
+      <div class="card-body">
+         <a href="{% url 'postDetail' post.pk %}">{{ post.title }}</a>
+         {% if user.id == post.author.id %}                
+         <a href="{% url 'postUpdate' post.pk %}"><i class="far fa-edit"></i></a>
+         <a href="{% url 'postDelete' post.pk %}"><i class="fas fa-eraser"></i></a>
+         {% endif %}
+      </div>
+   </div>
+   {% endfor %}
+</div>
+<br><br><br>
+{% endblock content %}

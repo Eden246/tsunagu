@@ -1,0 +1,54 @@
+{% load crispy_forms_tags %}
+<style>
+.select2-container {
+    max-width: 1em !important;
+}
+</style>
+
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.full.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<div class="container justify-content-center text-center border border-warning">
+    <br>
+    <h3 class="header-0 border-bottom">《予約システム》</h3>
+    <br>
+        <form method='POST'>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-4">
+                {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-sm-4">
+                {{ form.email|as_crispy_field }}
+            </div>
+            <div class="col-sm-4">
+                {{ form.phone|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-3">
+                {{ form.date|as_crispy_field }}
+            </div>
+            <div class="col-sm-3">
+                {{ form.time|as_crispy_field }}
+            </div>
+            <div class="col-sm-2">
+                {{ form.facility|as_crispy_field }}
+            </div>
+        </div>
+        {{ form.media }}
+        <input type="submit" value='登録'/>
+        </form>
+    </div>
+    <br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+

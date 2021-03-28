@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">品名</th>
+      <th scope="col">価格</th>
+      <th scope="col">数量</th>
+      <th scope="col">合計金額</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  {% for order_item in object.items.all %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ order_item.item.title }}</td>
+      <td>通常価格：{{ order_item.item.price }}</td>
+      <td>
+      <a href="{% url 'remove-single-item-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+      {{ order_item.quantity }}
+      <a href="{% url 'add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+      </td>
+      <td>
+      {% if order_item.item.discount_price %}
+      <div class="badge badge-primary">会員価格</div>
+        {{ order_item.get_total_discount_item_price }}円
+        ({{order_item.get_amount_saved}}円分 節約！)
+      {% else %}
+        {{ order_item.get_total_item_price }}円
+      {% endif %}
+      <a style="color:gray;" href="{% url 'remove-form-cart' order_item.item.slug %}"><i class="fas fa-trash float float-right"></i></a>
+      </td>
+    </tr>
+  {% empty %}
+<tr>
+<td colspan="4">注文がございません。</td>
+</tr>
+
+  {% endfor %}
+  
+  {% if object.get_total %}
+    
+    
+  <tr>
+  <td colspan="4"><b>最終合計</b></td>
+    <td ><b>{{ object.get_total }}円</b></td>
+  </tr>
+  </tbody>
+  {% endif %}
+  
+  <tr>
+    <td colspan="4">
+    <a class="btn btn-info ml-2" href="{% url 'menu'%}">ページ戻り</a>
+    <a class="btn btn-warning" href="{% url 'checkout-page'%}">お会計</a>
+    </td>
+  </tr>
+</table>
+</div>
+{% endblock content %}

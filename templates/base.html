@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+     <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css'%}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.min.css'%}" rel="stylesheet">
+  
+<style>
+.btn-blue {
+    color: white;
+    background-color:navy;
+}
+
+html, body { height: 100%; }
+
+h1 {
+ user-select:none;
+}
+
+span { display:inline-block; animation:float .2s ease-in-out infinite; }
+ @keyframes float {
+  0%,100%{ transform:none; }
+  33%{ transform:translateY(-1px) rotate(-2deg); }
+  66%{ transform:translateY(1px) rotate(2deg); }
+}
+body:hover span { animation:bounce .6s; }
+@keyframes bounce {
+  0%,100%{ transform:translate(0); }
+  25%{ transform:rotateX(20deg) translateY(2px) rotate(-3deg); }
+  50%{ transform:translateY(-20px) rotate(3deg) scale(1.1);  }
+}
+
+span:nth-child(4n) { color:hsl(50, 75%, 55%); text-shadow:1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%), 3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%); }
+span:nth-child(4n-1) { color:hsl(135, 35%, 55%); text-shadow:1px 1px hsl(135, 35%, 45%), 2px 2px hsl(135, 35%, 45%), 3px 3px hsl(135, 35%, 45%), 4px 4px hsl(135, 35%, 45%); }
+span:nth-child(4n-2) { color:hsl(155, 35%, 60%); text-shadow:1px 1px hsl(155, 25%, 50%), 2px 2px hsl(155, 25%, 50%), 3px 3px hsl(155, 25%, 50%), 4px 4px hsl(140, 25%, 50%); }
+span:nth-child(4n-3) { color:hsl(30, 65%, 60%); text-shadow:1px 1px hsl(30, 45%, 50%), 2px 2px hsl(30, 45%, 50%), 3px 3px hsl(30, 45%, 50%), 4px 4px hsl(30, 45%, 50%); }
+
+span:nth-child(2){ animation-delay:.05s; }
+span:nth-child(3){ animation-delay:.1s; }
+span:nth-child(4){ animation-delay:.15s; }
+span:nth-child(5){ animation-delay:.2s; }
+span:nth-child(6){ animation-delay:.25s; }
+span:nth-child(7){ animation-delay:.3s; }
+span:nth-child(8){ animation-delay:.35s; }
+span:nth-child(9){ animation-delay:.4s; }
+span:nth-child(10){ animation-delay:.45s; }
+span:nth-child(11){ animation-delay:.5s; }
+span:nth-child(12){ animation-delay:.55s; }
+span:nth-child(13){ animation-delay:.6s; }
+span:nth-child(14){ animation-delay:.65s; }
+
+</style>
+    
+    {% block additional_styles %}
+    
+    {% endblock additional_styles %}
+    <title>
+    {% block title %}
+        必要な物を必要な人に『津NAGU』
+    {% endblock title %}
+    </title>
+
+</head>
+<body style="background-color:#f6f6f6;">
+
+{% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary p-0 mb-0" role="alert">{{message}}</div>
+        {% endfor %}
+{% endif %}
+
+{% include 'nav.html' %}
+
+{% url 'post' as the_url %}
+{% if request.get_full_path == the_url %}
+<div class="page-header">
+   <div class="container pt-3 col-md4">
+      <br><br><br><br><br><br>
+      <div class="row align-items-center justify-content-center"style="height:200">
+         <h2><span>津</span><span>N</span><span>A</span><span>G</span><span>U</span></h2>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+         <div class="container__c1">
+            <div class="product__disc--content">
+            <div class="text-center">
+            <br>
+            <h4 style="color:gray;">&emsp;&emsp;&emsp;&emsp;&emsp;ただ今キャンペーン中！</h4>
+            </div>
+            <br>
+            <div class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if user.is_authenticated %}
+                <a href="{% url 'postAdd' %}" class="intro-banner-vdo-play-btn pinkBg" target="_blank">
+                <span class="ripple pinkBg text-light bg-primary loading"><h3>物<br>件<br>登<br>録</h3></span>
+                {% else %}
+                <a href="{% url 'account_signup' %}" class="intro-banner-vdo-play-btn pinkBg" target="_blank">
+                <span class="ripple pinkBg text-light bg-primary loading"><h3>会<br>員<br>登<br>録</h3></span>
+                {% endif %}
+                <i class="glyphicon glyphicon-play whiteText" aria-hidden="true"></i>
+                </a>
+                </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+    
+{% endif %}
+
+<br><br><br><br>
+{% block content %}
+{% endblock content %}
+
+
+
+{% include 'foot.html' %}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+
+
+
+</html>

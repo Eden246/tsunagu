@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+    
+{% block additional_styles %}
+<style>
+    body {
+        background-image: url(/static/image/background.jpg)
+    }
+    
+</style>
+{% endblock additional_styles %}
+
+{% block content %}
+<br><br>
+<div class="container" style="width: 50%; min-width: 470px; max-width: 800px;">
+    <h1 class="text-center" style="color:orange;">物品リスト</h1>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 col-sm-12 text-center">
+            <form method="GET" action="{% url 'PostSearch' %}">
+                <div class="md-form mt-0 active-cyan-2">
+                    <input class="form-control" name="q" type="text" placeholder="キーワード検索(タイトル、本文、登録者、カテゴリーなど）" aria-label="Search" value="{{ request.GET.q }}">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    {% for post in posts %}
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title"><a href="{% url 'postDetail'　post.pk %}">{{ post.title }}</a>/ 登録日付：{{ post.created_at }}　登録者：{{ post.author}}</h6>
+            <p class="card-text">{{ post.body|safe|slice:":200" }}</p>
+            {% if user.id == post.author.id %}                
+            <a href="{% url 'postUpdate' post.pk %}">(編集)</a>
+            <a href="{% url 'postDelete' post.pk %}">(削除)</a>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+{% endblock content %}
